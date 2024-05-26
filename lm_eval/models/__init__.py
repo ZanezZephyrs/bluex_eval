@@ -2,6 +2,7 @@ from . import chatgpt
 from . import gpt2
 from . import gpt3
 from . import dummy
+from . import together
 
 MODEL_REGISTRY = {
     "hf": gpt2.HFLM,
@@ -9,6 +10,7 @@ MODEL_REGISTRY = {
     "gpt3": gpt3.GPT3LM,
     "chatgpt": chatgpt.CHATGPTLM,
     "dummy": dummy.DummyLM,
+    "together": together.TogetherLM,
 }
 
 
