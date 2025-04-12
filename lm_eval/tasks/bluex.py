@@ -53,19 +53,19 @@ apply_regex = lambda pattern, replace, text: re.sub(pattern, replace, text)
 from enum import Enum
 # enumerator with blind, image and caption 
 class BLUEX_EVAL_MODE:
-    BLIND = 0
+    IGNORE_IMAGES = 0
     IMAGE = 1
-    CAPTION = 2
+    BLIND_CAPTION = 2
     CONTEXT_CAPTION = 3
 
 
 
 class BLUEX(Task):
     VERSION = 0
-    DATASET_PATH = 'maritaca-ai/bluex_captions'
+    DATASET_PATH = 'portuguese-benchmark-datasets/BLUEX_test'
     DATASET_NAME = "default"
     COT = False
-    mode= BLUEX_EVAL_MODE.BLIND
+    mode= BLUEX_EVAL_MODE.IGNORE_IMAGES
 
 
 
@@ -121,11 +121,11 @@ class BLUEX(Task):
         header = 'Urgência emocional. Se tudo é para ontem, se a vida engata uma primeira e sai em disparada, se não há mais tempo para paradas estratégicas, caímos fatalmente no vício de querer que os amores sejam igualmente resolvidos num átimo de segundo. Temos pressa para ouvir "eu te amo". Não vemos a hora de que fiquem estabelecidas as regras de convívio: somos namorados, ficantes, casados, amantes? Urgência emocional. Uma cilada. Associamos diversas palavras ao AMOR: paixão, romance, sexo, adrenalina, palpitação. Esquecemos, no entanto, da palavra que viabiliza esse sentimento: "paciência". Amor sem paciência não vinga. Amor não pode ser mastigado e engolido com emergência, com fome desesperada. É uma refeição que pode durar uma vida. MEDEIROS, M. Disponível em: http://porumavidasimples.blogspot.com.br. Acesso em: 20 ago. 2017 (adaptado).'
         statement = 'Nesse texto de opinião, as marcas linguísticas revelam uma situação distensa e de pouca formalidade, o que se evidencia pelo(a) '
         options = [
-            'a) impessoalização ao longo do texto, como em: "se não há mais tempo". ',
-            'b) construção de uma atmosfera de urgência, em palavras como: "pressa". ',
-            'c) repetição de uma determinada estrutura sintática, como em: "Se tudo é para ontem". ',
-            'd) ênfase no emprego da hipérbole, como em: "uma refeição que pode durar uma vida". ',
-            'e) emprego de metáforas, como em: "a vida engata uma primeira e sai em disparada". ',
+            'A. impessoalização ao longo do texto, como em: "se não há mais tempo". ',
+            'B. construção de uma atmosfera de urgência, em palavras como: "pressa". ',
+            'C. repetição de uma determinada estrutura sintática, como em: "Se tudo é para ontem". ',
+            'D. ênfase no emprego da hipérbole, como em: "uma refeição que pode durar uma vida". ',
+            'E. emprego de metáforas, como em: "a vida engata uma primeira e sai em disparada". ',
         ]
         explanation_1 = 'A alternativa A. está ERRADA porque impessoalização não é uma marca de pouca formalidade, inclusive o uso do verbo haver representa uma marca de formalidade. A alternativa B. está ERRADA porque o texto até criou uma atmosfera de urgência, embora tenha sido para criticá-la, e discute exatamente a importância da paciência e não da pressa. A alternativa C. está ERRADA porque a estrutura sintática não é repetida sistematicamente ao longo do texto. A alternativa D. está ERRADA porque, embora o texto possua hipérboles, para afirmar que a figura de linguagem é enfatizada, ela deveria aparecer mais vezes. A alternativa E. está CORRETA porque o texto possui comparações implícitas que se caracterizam como metáforas. Logo o texto emprega metáforas. Resposta:'
         explanation_2 = 'O texto é escrito em uma linguagem leve, ágil, e de pouca formalidade. Além disso, possui figuras de linguagem, como metáforas e hipérboles, que não são excludentes. Em uma análise sequencial das alternativas, daria para afirmar que D. e E. estão corretas. Entretanto, observando em detalhes, nota-se que a expressão "emprego de metáforas" mostra ser mais adequada do que "ênfase no emprego da hipérbole", visto que, para afirmarmos que o uso de hipérboles foi enfatizado, a figura de linguagem deveria ter aparecido mais vezes. Isso torna a alternativa E. mais provável de ser CORRETA. Além disso, impessoalização não deve ser apontada como marca de pouca formalidade. Existe também uma atmosfera de urgência, mas que é criticada no texto que destaca a importância da paciência e não da pressa. Por fim, a estrutura sintática não é repetida sistematicamente ao longo do texto. Resposta:'
@@ -142,18 +142,18 @@ class BLUEX(Task):
             "BK": False,
             "MR": False,
             "associated_images": [],
-            "captions": [],
+            "blind_captions": [],
             "context_captions": []
         }
 
         header = 'Sempre que a relevância do discurso entra em jogo, a questão torna-se política por definição, pois é o discurso que faz do homem um ser político. E tudo que os homens fazem, sabem ou experimentam só tem sentido na medida em que pode ser discutido. Haverá, talvez, verdades que ficam além da linguagem e que podem ser de grande relevância para o homem no singular, isto é, para o homem que, seja o que for, não é um ser político. Mas homens no plural, isto é, os homens que vivem e se movem e agem neste mundo, só podem experimentar o significado das coisas por poderem falar e ser inteligíveis entre si e consigo mesmos. ARENDT, H. A condição humana. Rio de Janeiro: Forense Universitária, 2004.'
         statement = 'No trecho, a filósofa Hannah Arendt mostra a importância da linguagem no processo de'
         options = [
-            'a) entendimento da cultura.',
-            'b) aumento da criatividade.',
-            'c) percepção da individualidade.',
-            'd) melhoria da técnica.',
-            'e) construção da sociabilidade.',
+            'A. entendimento da cultura.',
+            'B. aumento da criatividade.',
+            'C. percepção da individualidade.',
+            'D. melhoria da técnica.',
+            'E. construção da sociabilidade.',
         ]
         explanation_1 = 'A alternativa A. está ERRADA porque Hannah Arendt não trata do entendimento da cultura, mas da relação social entre as pessoas dessa cultura. A alternativa B. está ERRADA porque Hannah Arendt não fala sobre criatividade, mas sobre a construção de laços entre as pessoas. A alternativa C. está ERRADA porque a linguagem é utilizada no oposto da individualidade, em algo mais coletivo e social. A alternativa D. está ERRADA porque o texto não fala de técnica, mas de laços. A alternativa E. está CORRETA porque a nossa sociabilidade se constrói a partir da linguagem, o que faz de nós seres políticos, no sentido de viver em sociedade, em ambientes coletivos. Resposta:'
         explanation_2 = 'Hannah Arendt defende em sua obra que somos seres políticos, no sentido próprio de vivermos em pólis, em ambiente coletivo e social. E essa sociabilidade só é possível por meio do discurso, da linguagem. Desse modo, podemos concluir que a linguagem se apresenta como uma importante ferramenta para a construção da sociabilidade, e portanto a alternativa E. é a CORRETA. Além disso, não se trata do entendimento da cultura, mas da relação social entre as pessoas dessa cultura. Hannah também não fala sobre aumento de criatividade, tampouco sobre técnica. Por fim, a linguagem é utilizada em algo mais coletivo e social, justamente o oposto da individualidade. Resposta:'
@@ -170,7 +170,7 @@ class BLUEX(Task):
             "BK": False,
             "MR": False,
             "associated_images": [],
-            "captions": [],
+            "blind_captions": [],
             "context_captions": []
 
         }
@@ -178,11 +178,11 @@ class BLUEX(Task):
         header = 'Um casal planeja construir em sua chácara uma piscina com o formato de um paralelepípedo reto retângulo com capacidade para 90 000 L de água. O casal contratou uma empresa de construções que apresentou cinco projetos com diferentes combinações nas dimensões internas de profundidade, largura e comprimento. A piscina a ser construída terá revestimento interno em suas paredes e fundo com uma mesma cerâmica, e o casal irá escolher o projeto que exija a menor área de revestimento. As dimensões internas de profundidade, largura e comprimento, respectivamente, para cada um dos projetos, são: projeto I: 1,8 m, 2,0 m e 25,0 m; projeto II: 2,0 m, 5,0 m e 9,0 m; projeto III: 1,0 m, 6,0 m e 15,0 m; projeto IV: 1,5 m, 15,0 m e 4,0 m; projeto V: 2,5 m, 3,0 m e 12,0 m.'
         statement = 'O projeto que o casal deverá escolher será o'
         options = [
-            'a) I.',
-            'b) II.',
-            'c) III.',
-            'd) IV.',
-            'e) V.',
+            'A. I.',
+            'B. II.',
+            'C. III.',
+            'D. IV.',
+            'E. V.',
         ]
         explanation_1 = 'Devemos calcular a área das quatro faces laterais e a área da base inferior (fundo da piscina) e somar essas áreas para obter a área de revestimento. Logo, calculando a área de revestimento de cada projeto, temos: Projeto I: A = 2 x 25 + 2 x 1,8 x (2 + 25) = 147,2; Projeto II: A = 9 x 5 + 2 x 2 x (9 + 5) = 101; Projeto III: A = 15 x 6 + 2 x 1 x (15 + 6) = 132; Projeto IV: A = 4 x 15 + 2 x 1,5 x (15 + 4) = 117; Projeto V: A = 3 x 12 + 2 x 2,5 x (3 + 12) = 111. Logo, o projeto com menor área de revestimento, é o projeto II, portanto a resposta corrreta é B. Resposta:'
         explanation_2 = 'Devemos calcular a área das quatro faces laterais e a área da base inferior (fundo da piscina) e somar essas áreas para obter a área de revestimento. Logo, calculando a área de revestimento de cada projeto, temos: Projeto I: A = 2 x 25 + 2 x 1,8 x (2 + 25) = 147,2; Projeto II: A = 9 x 5 + 2 x 2 x (9 + 5) = 101; Projeto III: A = 15 x 6 + 2 x 1 x (15 + 6) = 132; Projeto IV: A = 4 x 15 + 2 x 1,5 x (15 + 4) = 117; Projeto V: A = 3 x 12 + 2 x 2,5 x (3 + 12) = 111. Logo, o projeto com menor área de revestimento, é o projeto II, portanto a resposta correta é B. Resposta:'
@@ -199,7 +199,7 @@ class BLUEX(Task):
             "BK": False,
             "MR": False,
             "associated_images": [],
-            "captions": [],
+            "blind_captions": [],
             "context_captions": []
         }
         return [document_1, document_2, document_3]
@@ -231,8 +231,23 @@ class BLUEX(Task):
             Resposta:
             """
             prompt = "Enunciado: " + doc["question"] + "\nAlternativas:\n"
+
+            alternative_mappings= (
+                ('a)', 'A.'),
+                ('b)', 'B.'),
+                ('c)', 'C.'),
+                ('d)', 'D.'),
+                ('e)', 'E.'),
+            )
             for alternative in doc["alternatives"]:
-                prompt += f"{alternative}\n"
+
+                alternative_letter=alternative[:5]
+                rest=alternative[5:]
+                for mapping in alternative_mappings:
+                    alternative_letter=alternative_letter.replace(mapping[0], mapping[1])
+
+                alternative_text=alternative_letter+rest
+                prompt += f"{alternative_text}\n"
 
             if self.COT:
                 prompt += "Explicação:" + doc.get("explanation", "")
@@ -260,7 +275,8 @@ class BLUEX(Task):
             "subject": doc["subject"] if "subject" in doc else [],
             "university": university,
             "associated_images": doc["associated_images"],
-            "captions": doc["captions"],
+            "has_associated_images": len(doc["associated_images"]) > 0,
+            "blind_captions": doc["blind_captions"],
             "context_captions": doc["context_captions"],
             "explanation": doc.get("explanation", "")
         }
@@ -315,13 +331,20 @@ class BLUEX(Task):
             print(f'Regex failed at processing {pred=}')
             print(f'{gold=}, {pred=}, {doc["exam"]=}')
 
-        print(pred, gold)
+        #print(pred, gold)
         acc = 1. if pred == gold else 0.
 
         results = {
             "acc": acc,
             doc["exam"]: acc,
+            "debug_info": {
+                "expected_answer": gold,
+                "predicted_answer": pred,
+            },
         }
+
+        if doc["has_associated_images"]:
+            results["has_associated_images"] = acc
 
         if doc["BK"]:
             results["BK"] = acc
@@ -361,6 +384,7 @@ class BLUEX(Task):
             "IU": True,
             "USP": True,
             "UNICAMP": True,
+            "has_associated_images": True,
             **years_agg_dict,
             **subjects_agg_dict,
         }
@@ -395,6 +419,7 @@ class BLUEX(Task):
             "IU": safe_mean,
             "USP": safe_mean,
             "UNICAMP": safe_mean,
+            "has_associated_images": safe_mean,
             **years_agg_dict,
             **subjects_agg_dict,
         }
@@ -480,7 +505,7 @@ class BLUEX(Task):
                 example = adapt_text_to_conversation(example)
 
 
-                if self.mode in [BLUEX_EVAL_MODE.CAPTION, BLUEX_EVAL_MODE.CONTEXT_CAPTION]:
+                if self.mode in [BLUEX_EVAL_MODE.BLIND_CAPTION, BLUEX_EVAL_MODE.CONTEXT_CAPTION]:
                     # if we have description, use it. Replace the first placeholder with the description.
                     # descriptions for tables are ignored because the placeholder is added for images.
                     # experiment with_captions
@@ -488,7 +513,7 @@ class BLUEX(Task):
                     if self.mode == BLUEX_EVAL_MODE.CONTEXT_CAPTION:
                         captions= doc['context_captions']
                     else:
-                        captions= doc['captions']
+                        captions= doc['blind_captions']
 
                     for i in range(len(captions)):
                         example= example.replace(f"[IMAGE {i}]", f"Descrição da imagem: {captions[i]}")
@@ -503,7 +528,7 @@ class BLUEX(Task):
                     contents = [{"type": "text", "text": description}, *split_text_and_images(example, doc['associated_images'])]
                     
                     conversation.append_message(user_role, contents)
-                elif self.mode == BLUEX_EVAL_MODE.BLIND:
+                elif self.mode == BLUEX_EVAL_MODE.IGNORE_IMAGES:
                     # if we have placeholders, but no image, we remove the placeholders.
                     # it means the images were purposely excluded.
                     # experiment without_images
@@ -545,7 +570,7 @@ class BLUEX(Task):
                 
                 example = adapt_text_to_conversation(example)
                 
-                if self.mode in [BLUEX_EVAL_MODE.CAPTION, BLUEX_EVAL_MODE.CONTEXT_CAPTION]:
+                if self.mode in [BLUEX_EVAL_MODE.BLIND_CAPTION, BLUEX_EVAL_MODE.CONTEXT_CAPTION]:
                     # if we have description, use it. Replace the first placeholder with the description.
                     # descriptions for tables are ignored because the placeholder is added for images.
                     # experiment with_captions
@@ -553,7 +578,7 @@ class BLUEX(Task):
                     if self.mode == BLUEX_EVAL_MODE.CONTEXT_CAPTION:
                         captions= doc['context_captions']
                     else:
-                        captions= doc['captions']
+                        captions= doc['blind_captions']
 
                     for i in range(len(captions)):
                         example= example.replace(f"[IMAGE {i}]", f"Descrição da imagem: {captions[i]}")
@@ -568,7 +593,7 @@ class BLUEX(Task):
                     contents = [ *split_text_and_images(example, doc['associated_images'])]
                     
                     conversation.append_message(user_role, contents)
-                elif self.mode == BLUEX_EVAL_MODE.BLIND:
+                elif self.mode == BLUEX_EVAL_MODE.IGNORE_IMAGES:
                     # if we have placeholders, but no image, we remove the placeholders.
                     # it means the images were purposely excluded.
                     # experiment without_images
@@ -593,9 +618,9 @@ class BLUEX(Task):
             return description + labeled_examples + example
         
 
-class BLUEX_CAPTIONS(BLUEX):
+class BLUEX_BLIND_CAPTIONS(BLUEX):
     COT = False
-    mode = BLUEX_EVAL_MODE.CAPTION
+    mode = BLUEX_EVAL_MODE.BLIND_CAPTION
 
 class BLUEX_CONTEXT_CAPTIONS(BLUEX):
     COT = False
@@ -605,21 +630,22 @@ class BLUEX_IMAGES(BLUEX):
     COT = False
     mode = BLUEX_EVAL_MODE.IMAGE
 
-class BLUEX_BLIND(BLUEX):
+class BLUEX_IGNORE_IMAGES(BLUEX):
     COT = False
-    mode = BLUEX_EVAL_MODE.BLIND
+    mode = BLUEX_EVAL_MODE.IGNORE_IMAGES
 
-class BLUEX_CAPTIONS_COT(BLUEX):
+class BLUEX_BLIND_CAPTIONS_COT(BLUEX):
     COT = True
-    mode = BLUEX_EVAL_MODE.CAPTION
+    mode = BLUEX_EVAL_MODE.BLIND_CAPTION
 
 class BLUEX_CONTEXT_CAPTIONS_COT(BLUEX):
     COT = True
     mode = BLUEX_EVAL_MODE.CONTEXT_CAPTION
+    
 class BLUEX_IMAGES_COT(BLUEX):
     COT = True
     mode = BLUEX_EVAL_MODE.IMAGE
 
-class BLUEX_BLIND_COT(BLUEX):
+class BLUEX_IGNORE_IMAGES_COT(BLUEX):
     COT = True
-    mode = BLUEX_EVAL_MODE.BLIND
+    mode = BLUEX_EVAL_MODE.IGNORE_IMAGES

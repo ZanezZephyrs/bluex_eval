@@ -309,6 +309,9 @@ def evaluate(
             real_metric = metric.replace(
                 decontaminate_suffix, ""
             )  # decontaminated still uses the same metric
+
+        if real_metric not in task.aggregation():
+            continue
         results[task_name][metric] = task.aggregation()[real_metric](items)
 
         # hotfix: bleu, chrf, ter seem to be really expensive to bootstrap

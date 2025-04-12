@@ -31,13 +31,13 @@ TASK_REGISTRY = {
     "enem_2023_captions": enem_multimodal.ENEM_2023,
     "enem_cot_2023_captions": enem_multimodal.ENEM_CoT_2023,
 
-    "bluex_blind": bluex.BLUEX_BLIND,
+    "bluex_ignore_images": bluex.BLUEX_IGNORE_IMAGES,
     "bluex_images": bluex.BLUEX_IMAGES,
-    "bluex_captions": bluex.BLUEX_CAPTIONS,
+    "bluex_blind_captions": bluex.BLUEX_BLIND_CAPTIONS,
     "bluex_context_captions": bluex.BLUEX_CONTEXT_CAPTIONS,
-    "bluex_blind_cot": bluex.BLUEX_BLIND_COT,
+    "bluex_ignore_images_cot": bluex.BLUEX_IGNORE_IMAGES_COT,
     "bluex_images_cot": bluex.BLUEX_IMAGES_COT,
-    "bluex_captions_cot": bluex.BLUEX_CAPTIONS_COT,
+    "bluex_blind_captions_cot": bluex.BLUEX_BLIND_CAPTIONS_COT,
     "bluex_context_captions_cot": bluex.BLUEX_CONTEXT_CAPTIONS_COT,
 }
 
